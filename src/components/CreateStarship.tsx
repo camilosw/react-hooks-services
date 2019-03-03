@@ -16,7 +16,7 @@ const CreateStarship: React.FC<{}> = () => {
   );
   const { result, publishStarship } = usePostStarshipService();
 
-  const hancleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
     setStarship(prevStarship => ({
       ...prevStarship,
@@ -26,14 +26,8 @@ const CreateStarship: React.FC<{}> = () => {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    publishStarship(starship);
+    publishStarship(starship).then(() => setStarship(initialStarshipState));
   };
-
-  React.useEffect(() => {
-    if (result.status === 'loaded') {
-      setStarship(initialStarshipState);
-    }
-  }, [result]);
 
   return (
     <div className="card sell-starship">
@@ -45,7 +39,7 @@ const CreateStarship: React.FC<{}> = () => {
             type="text"
             name="name"
             value={starship.name}
-            onChange={hancleChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -54,7 +48,7 @@ const CreateStarship: React.FC<{}> = () => {
             type="text"
             name="cost_in_credits"
             value={starship.cost_in_credits}
-            onChange={hancleChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -63,7 +57,7 @@ const CreateStarship: React.FC<{}> = () => {
             type="text"
             name="crew"
             value={starship.crew}
-            onChange={hancleChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -72,7 +66,7 @@ const CreateStarship: React.FC<{}> = () => {
             type="text"
             name="passengers"
             value={starship.passengers}
-            onChange={hancleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="button-container">

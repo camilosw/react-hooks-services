@@ -18,14 +18,22 @@ export default () => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json; charset=utf-8');
 
-    fetch('https://swapi.co/api/starships', {
-      method: 'POST',
-      body: JSON.stringify(starship),
-      headers
-    })
-      .then(response => response.json())
-      .then(response => setResult({ status: 'loaded', payload: response }))
-      .catch(error => setResult({ status: 'error', error }));
+    return new Promise((resolve, reject) => {
+      fetch('https://swapi.co/api/starships', {
+        method: 'POST',
+        body: JSON.stringify(starship),
+        headers
+      })
+        .then(response => response.json())
+        .then(response => {
+          setResult({ status: 'loaded', payload: response });
+          resolve(response);
+        })
+        .catch(error => {
+          setResult({ status: 'error', error });
+          reject(error);
+        });
+    });
   };
 
   return {
