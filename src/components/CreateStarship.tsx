@@ -2,6 +2,7 @@ import * as React from 'react';
 import usePostStarshipService, {
   PostStarship
 } from '../services/usePostStarshipService';
+import Loader from './Loader';
 
 const CreateStarship: React.FC<{}> = () => {
   const initialStarshipState: PostStarship = {
@@ -35,10 +36,11 @@ const CreateStarship: React.FC<{}> = () => {
   }, [result]);
 
   return (
-    <div>
+    <div className="card sell-starship">
+      <p className="form-title">Do you have a starship to sell?</p>
       <form onSubmit={handleFormSubmit}>
         <div>
-          Name:
+          <label>Name</label>
           <input
             type="text"
             name="name"
@@ -47,7 +49,16 @@ const CreateStarship: React.FC<{}> = () => {
           />
         </div>
         <div>
-          Crew:
+          <label>Price</label>
+          <input
+            type="text"
+            name="cost_in_credits"
+            value={starship.cost_in_credits}
+            onChange={hancleChange}
+          />
+        </div>
+        <div>
+          <label>Crew</label>
           <input
             type="text"
             name="crew"
@@ -56,7 +67,7 @@ const CreateStarship: React.FC<{}> = () => {
           />
         </div>
         <div>
-          Passengers:
+          <label>Passengers</label>
           <input
             type="text"
             name="passengers"
@@ -64,19 +75,19 @@ const CreateStarship: React.FC<{}> = () => {
             onChange={hancleChange}
           />
         </div>
-        <div>
-          Price:
-          <input
-            type="text"
-            name="cost_in_credits"
-            value={starship.cost_in_credits}
-            onChange={hancleChange}
-          />
+        <div className="button-container">
+          <button type="submit">Send</button>
         </div>
-        <button type="submit">Send</button>
       </form>
-      {result.status === 'loading' && <div>Sending...</div>}
-      {result.status === 'loaded' && <div>Your starship was submitted</div>}
+
+      {result.status === 'loading' && (
+        <div className="loader-container">
+          <Loader />
+        </div>
+      )}
+      {result.status === 'loaded' && (
+        <div>Your starship has been submitted.</div>
+      )}
       {result.status === 'error' && (
         <div>
           A disturbance in the force prevented your starship to be submitted

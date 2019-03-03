@@ -1,1 +1,1 @@
-# Example using React Hooks to connect to services
+# Connecting to services using React Hooks

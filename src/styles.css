@@ -1,0 +1,186 @@
+html,
+body {
+  background-color: #dedce5;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body,
+input {
+  color: #373438;
+}
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  background-color: #130c0e;
+  color: white;
+  padding: 10px 10px 40px;
+}
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+.slogan {
+  max-width: 320px;
+  margin: 10px auto 0;
+}
+.card {
+  background-color: #fff;
+  padding: 20px 30px;
+  margin: 30px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  min-height: 100px;
+}
+.starship-item {
+  padding: 10px 30px;
+  margin: 0 -30px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 300;
+}
+.starship-item:hover {
+  background-color: #6590b9;
+  color: #fff;
+}
+.starship-modal-container,
+.starship-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.starship-modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+.starship-modal-background {
+  background-color: #000;
+  opacity: 0.5;
+}
+.starship {
+  background-color: #fff;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  z-index: 300;
+  padding: 20px 30px 10px;
+  border-radius: 5px;
+  width: 300px;
+}
+.starship h2 {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 0;
+}
+.price {
+  color: #625f63;
+  margin: 10px 0;
+}
+.starship-info {
+  margin: 30px -15px 0;
+  display: flex;
+  justify-content: center;
+}
+.starship-info-item {
+  text-align: center;
+  padding: 5px 15px;
+}
+.starship-info .label {
+  font-size: 14px;
+  color: #625f63;
+}
+.starship-info .data {
+  font-size: 20px;
+  margin: 5px;
+}
+.crew {
+  margin-top: 20px;
+}
+.form-title {
+  font-size: 20px;
+  text-align: center;
+}
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+input {
+  display: block;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid #a7a3a2;
+  width: 100%;
+}
+input:focus {
+  outline-color: #1f8dcc;
+  outline-width: 3px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+button {
+  font-size: 18px;
+  padding: 8px 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  border-width: 0;
+  outline: none;
+  background-color: #1f8dcc;
+  color: #fff;
+}
+.loader-container,
+.loader-container:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader-container:before {
+  content: '';
+  background-color: #a7a3a2;
+  opacity: 0.3;
+}
+.loader {
+  animation: loader-spin infinite 1s linear;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 5px solid #bcc8dc;
+  border-top-color: #1f8dcc;
+}
+
+@keyframes loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

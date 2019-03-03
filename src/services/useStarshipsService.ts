@@ -7,7 +7,6 @@ export interface Starships {
 }
 
 export default () => {
-  console.log('Reload useStarshipsService');
   const [result, setResult] = useState<Service<Starships>>({
     status: 'loading'
   });
