@@ -6,7 +6,7 @@ export interface Starships {
   results: Starship[];
 }
 
-export default () => {
+const useStarshipsService = () => {
   const [result, setResult] = useState<Service<Starships>>({
     status: 'loading'
   });
@@ -20,3 +20,5 @@ export default () => {
 
   return result;
 };
+
+export default useStarshipsService;

@@ -7,7 +7,7 @@ export type PostStarship = Pick<
   'name' | 'crew' | 'passengers' | 'cost_in_credits'
 >;
 
-export default () => {
+const usePostStarshipService = () => {
   const [result, setResult] = useState<Service<PostStarship>>({
     status: 'init'
   });
@@ -41,3 +41,5 @@ export default () => {
     publishStarship
   };
 };
+
+export default usePostStarshipService;

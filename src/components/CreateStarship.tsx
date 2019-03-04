@@ -84,7 +84,7 @@ const CreateStarship: React.FC<{}> = () => {
       )}
       {result.status === 'error' && (
         <div>
-          A disturbance in the force prevented your starship to be submitted
+          A disturbance in the force prevented your starship to be submitted.
         </div>
       )}
     </div>

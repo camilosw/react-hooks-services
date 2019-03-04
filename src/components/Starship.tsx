@@ -47,7 +47,11 @@ const Starship: React.FC<Props> = ({ url, onClose }) => {
         </div>
       )}
 
-      {starship.status === 'error' && <div className="starship">Error</div>}
+      {starship.status === 'error' && (
+        <div className="starship">
+          Error, something weird happened with the starship.
+        </div>
+      )}
     </div>
   );
 };

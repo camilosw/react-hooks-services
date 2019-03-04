@@ -9,9 +9,6 @@ const Starships: React.FC<{}> = () => {
 
   return (
     <>
-      {starships.status === 'error' && (
-        <div>An error has ocurred, the backend moved to the dark side.</div>
-      )}
       <div className="card">
         {starships.status === 'loading' && (
           <div className="loader-container">
@@ -30,6 +27,9 @@ const Starships: React.FC<{}> = () => {
           ))}
         {!!url && <Starship url={url} onClose={() => setUrl('')} />}
       </div>
+      {starships.status === 'error' && (
+        <div>Error, the backend moved to the dark side.</div>
+      )}
     </>
   );
 };

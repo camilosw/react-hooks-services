@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Service } from '../types/Service';
 import { Starship } from '../types/Starship';
 
-export default (url: string) => {
+const useSingleStarshipService = (url: string) => {
   const [result, setResult] = useState<Service<Starship>>({
     status: 'init'
   });
@@ -19,3 +19,5 @@ export default (url: string) => {
 
   return result;
 };
+
+export default useSingleStarshipService;
