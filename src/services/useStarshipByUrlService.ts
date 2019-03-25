@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Service } from '../types/Service';
 import { Starship } from '../types/Starship';
 
-const useSingleStarshipService = (url: string) => {
+const useStarshipByUrlService = (url: string) => {
   const [result, setResult] = useState<Service<Starship>>({
-    status: 'init'
+    status: 'loading'
   });
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const useSingleStarshipService = (url: string) => {
   return result;
 };
 
-export default useSingleStarshipService;
+export default useStarshipByUrlService;

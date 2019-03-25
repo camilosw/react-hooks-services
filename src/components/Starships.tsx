@@ -1,33 +1,33 @@
-import * as React from 'react';
+import React from 'react';
 import useStarshipsService from '../services/useStarshipsService';
 import Loader from './Loader';
 import Starship from './Starship';
 
 const Starships: React.FC<{}> = () => {
-  const starships = useStarshipsService();
+  const service = useStarshipsService();
   const [url, setUrl] = React.useState('');
 
   return (
     <>
       <div className="card">
-        {starships.status === 'loading' && (
+        {service.status === 'loading' && (
           <div className="loader-container">
             <Loader />
           </div>
         )}
-        {starships.status === 'loaded' &&
-          starships.payload.results.map((starship, index) => (
+        {service.status === 'loaded' &&
+          service.payload.results.map(starship => (
             <div
               className="starship-item"
               onClick={() => setUrl(starship.url)}
-              key={index}
+              key={starship.url}
             >
               {starship.name}
             </div>
           ))}
         {!!url && <Starship url={url} onClose={() => setUrl('')} />}
       </div>
-      {starships.status === 'error' && (
+      {service.status === 'error' && (
         <div>Error, the backend moved to the dark side.</div>
       )}
     </>

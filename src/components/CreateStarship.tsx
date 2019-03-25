@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import usePostStarshipService, {
   PostStarship
 } from '../services/usePostStarshipService';
@@ -14,7 +14,7 @@ const CreateStarship: React.FC<{}> = () => {
   const [starship, setStarship] = React.useState<PostStarship>(
     initialStarshipState
   );
-  const { result, publishStarship } = usePostStarshipService();
+  const { service, publishStarship } = usePostStarshipService();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
@@ -74,15 +74,15 @@ const CreateStarship: React.FC<{}> = () => {
         </div>
       </form>
 
-      {result.status === 'loading' && (
+      {service.status === 'loading' && (
         <div className="loader-container">
           <Loader />
         </div>
       )}
-      {result.status === 'loaded' && (
+      {service.status === 'loaded' && (
         <div>Your starship has been submitted.</div>
       )}
-      {result.status === 'error' && (
+      {service.status === 'error' && (
         <div>
           A disturbance in the force prevented your starship to be submitted.
         </div>

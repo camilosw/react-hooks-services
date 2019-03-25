@@ -8,12 +8,12 @@ export type PostStarship = Pick<
 >;
 
 const usePostStarshipService = () => {
-  const [result, setResult] = useState<Service<PostStarship>>({
+  const [service, setService] = useState<Service<PostStarship>>({
     status: 'init'
   });
 
   const publishStarship = (starship: PostStarship) => {
-    setResult({ status: 'loading' });
+    setService({ status: 'loading' });
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json; charset=utf-8');
@@ -26,18 +26,18 @@ const usePostStarshipService = () => {
       })
         .then(response => response.json())
         .then(response => {
-          setResult({ status: 'loaded', payload: response });
+          setService({ status: 'loaded', payload: response });
           resolve(response);
         })
         .catch(error => {
-          setResult({ status: 'error', error });
+          setService({ status: 'error', error });
           reject(error);
         });
     });
   };
 
   return {
-    result,
+    service,
     publishStarship
   };
 };
